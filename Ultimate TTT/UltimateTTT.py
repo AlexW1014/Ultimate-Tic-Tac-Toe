@@ -1,4 +1,4 @@
-#! "C:\Users\BING BING\Desktop\Python Projects\myenv\Scripts\python.exe"
+#! "C:\Users\BING BING\Desktop\Projects\Python Projects\myenv\Scripts\python.exe"
 import pygame as pg, sys
 import math
 from Button import Button 
@@ -144,12 +144,11 @@ def add_XO(big_board, big_graphical_board,board, graphical_board, turn, active_b
             
         game_finished = check_win(big_board, big_graphical_board,board, graphical_board, turn, active_box,game_finished, text_font)
 
-        if big_board[converted_z][converted_a] == 'X' or big_board[converted_z][converted_a] == 'O' or game_finished is not None:
+        if big_board[converted_z][converted_a] == 'X' or big_board[converted_z][converted_a] == 'O' or big_board[converted_z][converted_a] == 'DRAW' or game_finished is not None:
             active_box = [None, None]
         else:
             active_box = [converted_z, converted_a]
     
-
 
     big_graphical_board, graphical_board = render_board(big_board, big_graphical_board, board,graphical_board,SMALL_X,SMALL_O)
     
@@ -215,7 +214,6 @@ def play_menu():
 
 
     while True:
-
         curr_pos = pg.mouse.get_pos()
         back_Button = Button(None,(690,735),"BACK",get_font(13),"red","black")
         back_Button.changeColor(curr_pos)
@@ -224,7 +222,6 @@ def play_menu():
 
 
         for event in pg.event.get():
-
             if event.type == pg.QUIT:
                 sys.exit()
             if event.type == pg.MOUSEBUTTONDOWN:
